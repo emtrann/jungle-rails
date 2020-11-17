@@ -32,7 +32,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
           <% if current_user %>
-            <li style="margin-top: 7px"><h5> Signed in as <%= current_user.name %>
+            <li style="margin-top: 7px"><h5> Signed in as <%= current_user.first_name %>
             </h5></li> 
             <li> <%= link_to "Logout", '/logout' %> </li>
           <% else %>

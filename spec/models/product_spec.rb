@@ -12,25 +12,25 @@ RSpec.describe Product, type: :model do
     it 'should be invalid if name was not inputted' do
       @cat1 = Category.new name: 'Apparel'
       @product = Product.create(name: nil, price: '123', quantity: 20, category: @cat1)
-      expect(@product.errors.full_messages.inspect).to include("can't be blank")
+      expect(@product.errors.full_messages).to include("Name can't be blank")
     end
 
     it 'should be invalid if price was not inputted' do
       @cat1 = Category.new name: 'Apparel'
       @product = Product.create(name: 'nice shirt', price: nil, quantity: 20, category: @cat1)
-      expect(@product.errors.full_messages.inspect).to include("can't be blank")
+      expect(@product.errors.full_messages).to include("Price can't be blank")
     end
 
     it 'should be invalid if quantity was not inputted' do
       @cat1 = Category.new name: 'Apparel'
       @product = Product.create(name: 'nice shirt', price: 123, quantity: nil, category: @cat1)
-      expect(@product.errors.full_messages.inspect).to include("can't be blank")
+      expect(@product.errors.full_messages).to include("Quantity can't be blank")
     end
 
     it 'should be invalid if category was not inputted' do
       @cat1 = Category.new name: 'Apparel'
       @product = Product.create(name: 'nice shirt', price: 123, quantity: nil, category: nil)
-      expect(@product.errors.full_messages.inspect).to include("can't be blank")
+      expect(@product.errors.full_messages).to include("Category can't be blank")
     end
   end
 
