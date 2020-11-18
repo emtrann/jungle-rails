@@ -17,9 +17,11 @@ RSpec.feature "Visitor navigates to home page", type: :feature, js: true do
     end
   end
 
-  scenario "They see all products" do
+  scenario "They see product details" do
     visit root_path
 
-    expect(page).to have_css 'article.product', count: 10
+    find('.product header h4', match: :first).click
+    sleep 5
+    expect(page).to have_css('h1', text: 'Apparel')
   end
 end
