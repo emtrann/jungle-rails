@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Visitor navigates to product details", type: :feature, js: true do
+RSpec.feature "Cart increases by one when customers add a product", type: :feature, js: true do
 
   # SETUP
   before :each do
@@ -17,11 +17,10 @@ RSpec.feature "Visitor navigates to product details", type: :feature, js: true d
     end
   end
 
-  scenario "They see product details" do
+  scenario "They see cart update +1 after add product button clicked" do
     visit root_path
-
-    find('.product header h4', match: :first).click
-    sleep 5
-    expect(page).to have_css('h1', text: 'Apparel')
+    expect(page).to have_content('My Cart (0)')
+    first('.actions').click_button('Add')
+    expect(page).to have_content('My Cart (1)')
   end
 end
